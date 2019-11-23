@@ -70,9 +70,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Name";
+            this.label3.Text = "Email";
             this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // button1

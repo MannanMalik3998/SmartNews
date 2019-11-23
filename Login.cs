@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,10 +58,61 @@ namespace WinApp
             }
 
 
-            /*
-                connect api and check for username and pass in the database, If user present then proceed else show invalid pass   
-            */
+            //*******************************************************************************************************************************
+            #region Authenticate user from API
+            bool chk = false;
+            try
+            {
+             
+                //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                String strResponseValue = "";
+ 
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://3dbdf7b4.ngrok.io/api/SmartNews");
+                webRequest.Method = "GET";
+                webRequest.Headers.Add("Authorization", "Basic " + System.Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(username + ":" + password)));
+                //webRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes(username + ":" + password)));
 
+                HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    if (responseStream != null)
+                    {
+                        using (StreamReader reader = new StreamReader(responseStream))
+                        {
+                            strResponseValue = reader.ReadToEnd();
+                        }
+                    }
+                }
+                if (strResponseValue.Contains("UserFound"))
+                {
+                    MessageBox.Show("Approved","Validated");
+                    chk = true;
+                }
+#endregion
+                //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+
+                if (chk)
+                {//validated user
+                 
+                    user.name = "Manan";
+                    //obtain the free time and categories
+                    new Select().Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username or password");
+                }
+            }
+            catch (Exception y) {
+                MessageBox.Show(y.Message,"Error");
+            }
+
+            //*******************************************************************************************************************************
+
+            #region Hard Coded form validation
+            /*
             //Will obtain from api
             user.userId = "Manan";//hardcoded id pass
             user.pass = "Manan";
@@ -72,7 +126,8 @@ namespace WinApp
             else {
                 MessageBox.Show("Invalid Username or password");
             }
-            
+            */
+            #endregion
         }
 
         private void Label3_Click_1(object sender, EventArgs e)
