@@ -41,7 +41,7 @@ namespace WinApp
             try
             {
                 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                /*
+                
                 #region Fetch news
                 input2 inp = new input2();
                 inp.category = category;
@@ -71,13 +71,13 @@ namespace WinApp
                 reader.Close();
                 dataStream.Close();
                 response.Close();
-              //  MessageBox.Show("Successfully signed up", "Response from api");
+              // MessageBox.Show(responseFromServer, "Response from api");
 #endregion
-*/
+
                 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-               var url = user.url+"api/FetchNews";
-                var json = new WebClient().DownloadString(url);
+              // var url = user.url+"api/FetchNews";
+                var json = responseFromServer;//new WebClient().DownloadString(url);
 
                 #region Api use
                 
@@ -145,7 +145,7 @@ namespace WinApp
             user.cat = "";
             user.name = "";
             user.freeTime = 0;
-            user.nameUser = "";
+            //user.nameUser = "";
 
             timer1.Enabled = false;
             return;//back to login screen
