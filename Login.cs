@@ -48,6 +48,7 @@ namespace WinApp
         {
             username = textBox1.Text;//Obtained id pass
             password = textBox2.Text;
+            user.nameUser = username;
 
             textBox1.Text = "";//empty the text box
             textBox2.Text = "";
@@ -67,7 +68,7 @@ namespace WinApp
                 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
                 String strResponseValue = "";
  
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://3dbdf7b4.ngrok.io/api/SmartNews");
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(user.url+"api/SmartNews");
                 webRequest.Method = "GET";
                 webRequest.Headers.Add("Authorization", "Basic " + System.Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(username + ":" + password)));
                 //webRequest.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(Encoding.Default.GetBytes(username + ":" + password)));

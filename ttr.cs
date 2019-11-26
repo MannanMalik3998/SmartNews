@@ -22,6 +22,7 @@ namespace WinApp
         Stopwatch stopWatch = new Stopwatch();
         String timeToRead;
         String timePerWord;
+        double time;
         public TimeToRead()
         {
             InitializeComponent();
@@ -40,47 +41,62 @@ namespace WinApp
             stopWatch.Stop();
             timeToRead = (stopWatch.ElapsedMilliseconds).ToString();
             timePerWord = ((stopWatch.ElapsedMilliseconds) / 233).ToString();//time per word in miliseconds
+            time= Convert.ToDouble(Convert.ToDouble(stopWatch.ElapsedMilliseconds / 233)/ 1000);//time in seconds
 
-            //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-            #region Post APi
-
-            input inp = new input();
-            inp.EmailAddress = user.name;//email
-            inp.Password = user.pass;//password
-            inp.UserName = user.userId;//username
-            inp.TimeTakenForReading = 2.0;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://3dbdf7b4.ngrok.io/api/SmartNews");
-            request.Method = "POST";
-            request.Credentials = CredentialCache.DefaultCredentials;
-            ((HttpWebRequest)request).UserAgent =
-                              "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
-            request.Accept = "/";
-            request.UseDefaultCredentials = true;
-            request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-            request.ContentType = "application/json";
-            
-            byte[] byteArray = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(inp));
-            request.ContentLength = byteArray.Length;
-
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-            string responseFromServer = "";
-            WebResponse response = request.GetResponse();
-            dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            responseFromServer = reader.ReadToEnd();
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-            MessageBox.Show(responseFromServer, "Response");
-            #endregion
-
+            MessageBox.Show("You took " + timeToRead + " miliseconds to read the above article i.e " + timePerWord + " miliseconds per word on average", "Time taken to read");
+            MessageBox.Show(time.ToString(),"Seconds");
             //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+            try
+            {
+                #region Post APi
+                input inp = new input();
+                inp.EmailAddress = user.name;//email
+                inp.Password = user.pass;//password
+                inp.UserName = user.userId;//username
+                inp.TimeTakenForReading = time;//time to read
 
-            MessageBox.Show("You took "+timeToRead+" miliseconds to read the above article i.e "+timePerWord+" miliseconds per word on average", "Time taken to read");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(user.url + "api/SmartNews");
+                request.Method = "POST";
+                request.Credentials = CredentialCache.DefaultCredentials;
+                ((HttpWebRequest)request).UserAgent =
+                                  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
+                request.Accept = "/";
+                request.UseDefaultCredentials = true;
+                request.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                request.ContentType = "application/json";
+
+                byte[] byteArray = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(inp));
+                request.ContentLength = byteArray.Length;
+
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+                string responseFromServer = "";
+                WebResponse response = request.GetResponse();
+                dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                responseFromServer = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+                MessageBox.Show("Successfully signed up", "Response from api");
+                #endregion
+            }
+            catch (Exception) {
+                MessageBox.Show("Signed up fail", "Response from api");
+                user.freeTime = 0;
+                user.name = "";
+                user.pass = "";
+                user.cat = "";
+                user.userId = "";
+                this.Close();
+                return;
+            }
+
+            //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
 
 
 

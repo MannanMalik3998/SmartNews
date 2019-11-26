@@ -40,7 +40,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 84);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(406, 346);
+            this.richTextBox1.Size = new System.Drawing.Size(1009, 472);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
@@ -50,7 +50,7 @@
             this.SignOut.BackColor = System.Drawing.Color.MintCream;
             this.SignOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.SignOut.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.SignOut.Location = new System.Drawing.Point(268, 13);
+            this.SignOut.Location = new System.Drawing.Point(946, 12);
             this.SignOut.Name = "SignOut";
             this.SignOut.Size = new System.Drawing.Size(75, 23);
             this.SignOut.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(344, 13);
+            this.button1.Location = new System.Drawing.Point(947, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 23);
             this.button1.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(430, 452);
+            this.ClientSize = new System.Drawing.Size(1033, 568);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
