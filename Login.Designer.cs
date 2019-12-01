@@ -46,6 +46,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(148, 21);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "xyz@xyz.com";
             this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // label1
@@ -53,9 +54,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 15);
+            this.label1.Size = new System.Drawing.Size(34, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "UserName";
+            this.label1.Text = "Email";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // button1

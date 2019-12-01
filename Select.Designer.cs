@@ -71,15 +71,15 @@
             this.comboBox2.Items.AddRange(new object[] {
             "Sports",
             "Politics",
+            "Education",
             "Technology",
-            "International",
-            "Business",
-            "National"});
+            "Weather",
+            "Business"});
             this.comboBox2.Location = new System.Drawing.Point(238, 128);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 26);
             this.comboBox2.TabIndex = 2;
-            this.comboBox2.Text = "National";
+            this.comboBox2.Text = "Business";
             // 
             // label1
             // 

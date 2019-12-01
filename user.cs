@@ -13,7 +13,7 @@ namespace WinApp
         public static string name;
         public static string cat;
         public static int freeTime;
-        public static string url="http://6e29f9a7.ngrok.io/";
+        public static string url= "http://5f0c8a90.ngrok.io/";
         public static string nameUser;
         //public static int timePerWord;
 
