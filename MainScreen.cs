@@ -81,8 +81,8 @@ namespace WinApp
                     response.Close();
                     news = responseFromServer;
                     neaNews = newsObj.ToString();
-                    neaNews.Replace(@"\", string.Empty);
-                    neaNews = neaNews.Substring(1, neaNews.Length - 2);
+                    //neaNews.Replace(@"\", string.Empty);
+                    //neaNews = neaNews.Substring(1, neaNews.Length - 2);
 
                     string[] neaNewsArray = neaNews.Split('}');
 
