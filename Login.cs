@@ -145,5 +145,14 @@ namespace WinApp
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            user.nameUser="";
+            //user.cat;
+            //obtain the free time and categories
+            new Select().Show();
+
+        }
     }
 }
