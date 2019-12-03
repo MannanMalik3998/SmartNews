@@ -81,36 +81,8 @@ namespace WinApp
                     response.Close();
                     news = responseFromServer;
                     neaNews = newsObj.ToString();
-                    //neaNews.Replace(@"\", string.Empty);
-                    //neaNews = neaNews.Substring(1, neaNews.Length - 2);
 
                     string[] neaNewsArray = neaNews.Split('}');
-
-
-                   /* for (int i = 0; i < neaNewsArray.Length; i++)
-                    {
-                        if (i > 0)
-                        {
-                            neaNewsArray[i] = neaNewsArray[i].Replace(",{", "{");
-                        }
-                        neaNewsArray[i] = neaNewsArray[i].Insert((neaNewsArray[i].Length), "}");
-                       // Console.WriteLine(neaNewsArray[i]);
-
-                    }*/
-
-                    
-
-                    
-                  /*  string show = "";
-                    foreach (string i in neaNewsArray) {
-                        show += i;// +"\n\n\n***********************\n\n";
-                        //show += i + "\n\n\n***********************\n\n";
-                    }*/
-                    // MessageBox.Show(show,"");
-
-                    //neaNews = show;
-
-                    // MessageBox.Show(neaNews + "******************\n\n", "Title");
 
                     //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
                     string show2 = "";
@@ -136,11 +108,7 @@ namespace WinApp
                     int c = 1;
                     foreach (var newss in JObjectList)
                     {
-                        // show2 += newss.ToString();
-                        //show2 += newss.ToString()+"\n\n**************\n\n";
-                        //break;
-                        //Console.WriteLine(news);
-
+                        
                         //"Url:\t" + newss["ImageInNews"]
                         show2 += "News: \t" + newss["NewsID"] + "\n" + "Source:\t" + newss["Source"] + "\n" + "Title:\t" + newss["NewsTitle"]
                      + "\nDescription:\t" + newss["NewsDescription"] +"\nPublish Date:\t" + newss["PublishedDate"]
@@ -150,60 +118,12 @@ namespace WinApp
 
                     //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
-                    // MessageBox.Show(responseFromServer, "Response from api");
-                    /*
-                     foreach(var x in newsObj)
-                     {
-                         MessageBox.Show(x.ToString()+"******************\n\n", "Title");
-                         break;
-                     }
-                    */
                     #endregion
                 }
                 catch (Exception e) {
                     MessageBox.Show("Not responding\n\n"+e.Message, "Response from api");
                 }
-                //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                /*
-                var url = user.url + "api/FetchNews?category=\"" + user.cat + "\"";
-                //var url = user.url+ "api/FetchNews?" + "category = national"; 
-                //var url = user.url+"api/FetchNews";
-                //var json = responseFromServer;//new WebClient().DownloadString(url);
-                var json = new WebClient().DownloadString(url);
-
-                #region Api use
                 
-                JToken parsedJson = JToken.Parse(json);
-                JArray innerValues = parsedJson["articles"].Value<JArray>();
-
-                dynamic albums = innerValues;
-
-                string news = "";
-
-                int c = 1;
-                foreach (dynamic album in albums)
-                {
-                    news += "News: \t" + (c++) + "\n" + "Source:\t" + album.source.name + "\n" + "Title:\t" + album.title
-                        + "\n" + "Author:\t" + album.author + "\n" + "Description:\t" + album.description + "\n" + "Url:\t" + album.url + "\n" + "Publish Date:\t" + album.publishedAt
-                        + "\n" + "\n***************************************************************\n";
-                    
-                    //Console.WriteLine("News: \t" + (c++));
-                    //Console.WriteLine("Source:\t" + album.source.name);
-                    //Console.WriteLine("Title:\t" + album.title);
-                    //Console.WriteLine("Author:\t" + album.author);
-                    //Console.WriteLine("Description:\t" + album.description);
-                    //Console.WriteLine("Url:\t" + album.url);
-                    //Console.WriteLine("Publish Date:\t" + album.publishedAt);
-                    //Console.WriteLine("\n***************************************************************\n");
-                    
-                }
-                #endregion
-                */
-                //(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))
-
-                //(((((((((((((((((((((((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))))))))))))))))))))))))
-
                 richTextBox1.Text = neaNews;
             }
             catch (Exception)
