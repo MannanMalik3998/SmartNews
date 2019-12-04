@@ -13,3 +13,6 @@ A news reading desktop app which displays time constrained news from a web API. 
   <img src="n4.png"  alt="Time to read one word">
   
 </p>
+
+#### Web API used
+https://github.com/MurtazaMultanWala/Projects/tree/master/Smart-E-News%20WebAPI?fbclid=IwAR2Wb5dsN-9VNyfUk3AaODgy5ifEXxcoNC9vg8AO-DEswr4B79h9tGciDJU
